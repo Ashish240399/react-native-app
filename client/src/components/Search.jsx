@@ -22,10 +22,7 @@ const Search = () => {
           color="#000"
         />
         <TextInput
-          style={[
-            styles.input,
-            { borderColor: isFocused ? "transparent" : "black" },
-          ]}
+          style={[styles.input]}
           onFocus={handleFocus}
           onBlur={handleBlur}
           underlineColorAndroid="transparent"

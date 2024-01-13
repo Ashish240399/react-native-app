@@ -36,17 +36,23 @@ const ProductCards = ({
                 setAddToFav([...addToFav, item.id]);
               }
             }}
-            style={{ position: "absolute", left: 10, top: 10, zIndex: 5 }}
+            style={{
+              position: "absolute",
+              left: 5,
+              top: 5,
+              zIndex: 5,
+              padding: 10,
+            }}
           >
             <Icon
               name="heart"
-              size={14}
+              size={18}
               color={addToFav.includes(item.id) ? "#FF8181" : "gray"}
             />
           </Pressable>
         </ImageBackground>
       </View>
-      <View style={{ padding: "10px" }}>
+      <View style={{ padding: 10 }}>
         <Text style={styles.priceText}>${item.price}</Text>
         <Text style={style.titleText}>{item.title}</Text>
         <Pressable
@@ -58,7 +64,7 @@ const ProductCards = ({
             color: "#FF8181",
             height: 24,
             width: 24,
-            borderRadius: "50%",
+            borderRadius: 100,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -84,15 +90,15 @@ export default ProductCards;
 
 const styles = StyleSheet.create({
   container: {
-    height: "194px",
+    height: 194,
     backgroundColor: "#F8F9FB",
-    borderRadius: "12px",
+    borderRadius: 12,
   },
   thumbnailView: {
-    height: "120px",
+    height: 120,
     width: "100%",
-    borderTopLeftRadius: "12px",
-    borderTopRightRadius: "12px",
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
     overflow: "hidden",
   },
   priceText: {

@@ -31,7 +31,6 @@ const Home = ({ navigation }) => {
       console.error(error);
     }
   }
-  console.log(product);
   return (
     <View style={styles.homeContainer}>
       <View style={styles.headContainer}>
@@ -42,7 +41,7 @@ const Home = ({ navigation }) => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: "30px",
+            marginTop: 30,
           }}
         >
           <View>
@@ -56,7 +55,7 @@ const Home = ({ navigation }) => {
         </View>
       </View>
       {/* ------------------Recommended Section------------------------ */}
-      <View style={{ flex: 1, paddingLeft: "20px", paddingRight: "10px" }}>
+      <View style={{ flex: 1, paddingLeft: 20, paddingRight: 10 }}>
         <Text style={styles.recomendedText}>Recommended</Text>
         {product && (
           <FlatList
