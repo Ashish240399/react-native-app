@@ -28,6 +28,7 @@ const Search = () => {
           underlineColorAndroid="transparent"
           autoCorrect={false}
           placeholder="Search"
+          placeholderTextColor="white"
         />
       </View>
     </View>
@@ -38,7 +39,6 @@ export default Search;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width: "100%",
   },
   searchSection: {

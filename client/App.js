@@ -17,6 +17,7 @@ export default function App() {
         initialRouteName="Home"
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          headerShown: false,
         }}
       >
         <MainStack.Screen
