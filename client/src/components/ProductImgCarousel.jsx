@@ -20,7 +20,7 @@ const ProductImgCarousel = ({ images }) => {
         data={images}
         onChangeIndex={({ index }) => handleIndexChange(index)}
         renderItem={({ item }) => (
-          <View style={{ width: viewportWidth, height: 300 }}>
+          <View style={{ width: viewportWidth, height: 207 }}>
             <Image
               source={{ uri: item }}
               style={{ width: "100%", height: 207 }}
@@ -41,6 +41,7 @@ const ProductImgCarousel = ({ images }) => {
       >
         {images.map((_, i) => (
           <View
+            key={i}
             style={{
               width: 15,
               height: 3,

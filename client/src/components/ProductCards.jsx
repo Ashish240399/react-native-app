@@ -5,93 +5,81 @@ import {
   Text,
   View,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import PlusIcon from "react-native-vector-icons/AntDesign";
+import CartContext from "../context/cart/CartContext";
+import FavContext from "../context/favorites/FavContext";
 
-const ProductCards = ({
-  style,
-  item,
-  setAddToCart,
-  addToCart,
-  setAddToFav,
-  addToFav,
-  setTotalItemToCart,
-  totalItemToTheCart,
-  navigation,
-}) => {
+const ProductCards = ({ style, item, navigation }) => {
+  const { cart, addToCart, removeFromCart, totalItemToTheCart } =
+    useContext(CartContext);
+  const { fav, addToFav, removeFromFav } = useContext(FavContext);
   return (
     <View style={[styles.container, style]}>
       <Pressable
-        onPress={() => navigation.navigate("ProductDetails", { item })}
-        style={{ flex: 1 }}
+        onPress={() =>
+          navigation.navigate("ProductDetails", {
+            item,
+          })
+        }
+        style={styles.flexOne}
       >
         <View style={styles.thumbnailView}>
           <ImageBackground
             source={{ uri: item.thumbnail }}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
+            style={styles.imageBackground}
             resizeMode="cover"
           >
             <Pressable
               onPress={() => {
-                if (addToFav.includes(item.id)) {
-                  setAddToFav(addToFav.filter((el) => el != item.id));
+                if (fav.includes(item.id)) {
+                  removeFromFav(item.id);
                 } else {
-                  setAddToFav([...addToFav, item.id]);
+                  addToFav(item.id);
                 }
               }}
-              style={{
-                position: "absolute",
-                left: 5,
-                top: 5,
-                zIndex: 5,
-                padding: 10,
-              }}
+              style={styles.favButton}
             >
               <Icon
                 name="heart"
                 size={18}
-                color={addToFav.includes(item.id) ? "#FF8181" : "gray"}
+                color={fav.includes(item.id) ? "#FF8181" : "gray"}
               />
             </Pressable>
           </ImageBackground>
         </View>
-        <View style={{ padding: 10 }}>
+        <View style={styles.padding}>
           <Text style={styles.priceText}>${item.price}</Text>
           <Text style={style.titleText}>{item.title}</Text>
-          <Pressable
-            style={{
-              position: "absolute",
-              right: 10,
-              top: 10,
-              backgroundColor: "#2A4BA0",
-              color: "#FF8181",
-              height: 24,
-              width: 24,
-              borderRadius: 100,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 5,
-            }}
-            onPress={() => {
-              if (addToCart[item.id]) {
-                setAddToCart({
-                  ...addToCart,
-                  [item.id]: addToCart[item.id] + 1,
-                });
-              } else {
-                setAddToCart({ ...addToCart, [item.id]: 1 });
-              }
-              setTotalItemToCart(totalItemToTheCart + 1);
-            }}
+          <View
+            style={[
+              cart[item.id] && styles.paddingToTheCartValueBtn,
+              styles.cartButtonContainer,
+            ]}
           >
-            {addToCart[item.id] && <Text>{addToCart[item.id]}</Text>}
-            <PlusIcon name="plus" size={12} color="white" />
-          </Pressable>
+            {cart[item.id] && (
+              <Pressable
+                style={styles.cartButton}
+                onPress={() => {
+                  removeFromCart(item);
+                }}
+              >
+                <PlusIcon name="minus" size={12} color="white" />
+              </Pressable>
+            )}
+            {cart[item.id] && (
+              <Text style={styles.cartItemCount}>{cart[item.id]}</Text>
+            )}
+            <Pressable
+              style={styles.cartButton}
+              onPress={() => {
+                addToCart(item);
+              }}
+            >
+              <PlusIcon name="plus" size={12} color="white" />
+            </Pressable>
+          </View>
         </View>
       </Pressable>
     </View>
@@ -121,5 +109,56 @@ const styles = StyleSheet.create({
   titleText: {
     color: "#616A7D",
     fontSize: 12,
+  },
+  paddingToTheCartValueBtn: {
+    paddingHorizontal: 10,
+  },
+  flexOne: {
+    flex: 1,
+  },
+  imageBackground: {
+    width: "100%",
+    height: "100%",
+  },
+  favButton: {
+    position: "absolute",
+    left: 5,
+    top: 5,
+    zIndex: 5,
+    padding: 10,
+  },
+  padding: {
+    padding: 10,
+  },
+  cartButtonContainer: {
+    position: "absolute",
+    right: 10,
+    top: 10,
+    minWidth: 24,
+    backgroundColor: "#2A4BA0",
+    height: 24,
+    borderRadius: 100,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 10,
+  },
+  cartButton: {
+    backgroundColor: "#2A4BA0",
+    color: "#FF8181",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 5,
+  },
+  cartItemCount: {
+    paddingHorizontal: 10,
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    marginHorizontal: 5,
+    borderRightColor: "white",
+    borderLeftColor: "white",
+    color: "white",
   },
 });

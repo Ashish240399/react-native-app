@@ -3,7 +3,7 @@ import React from "react";
 
 const Category = () => {
   return (
-    <View>
+    <View style={{ paddingTop: 52, paddingHorizontal: 20 }}>
       <Text>Category</Text>
     </View>
   );

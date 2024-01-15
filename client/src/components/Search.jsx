@@ -27,8 +27,8 @@ const Search = () => {
           onBlur={handleBlur}
           underlineColorAndroid="transparent"
           autoCorrect={false}
-          placeholder="Search"
-          placeholderTextColor="white"
+          placeholder="Search Products or Store"
+          placeholderTextColor="#8891A5"
         />
       </View>
     </View>

@@ -4,39 +4,47 @@ import Icon from "react-native-vector-icons/EvilIcons";
 
 const Banner = ({ banner }) => {
   return (
-    <View
-      style={{
-        backgroundColor: banner.color,
-        borderRadius: 16,
-        width: "50%",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        padding: 20,
-        marginRight: 20,
-        marginStart: 20,
-        marginEnd: 20,
-        maxHeight: 270,
-      }}
-    >
-      <View>
+    <View style={[styles.banner, { backgroundColor: banner.color }]}>
+      <View style={styles.icon}>
         <Icon name="image" size={70} color={"white"} />
       </View>
-      <View style={{ color: "white" }}>
-        <Text style={{ color: "white" }}>Get</Text>
-        <Text
-          style={{ fontWeight: "bold", fontSize: 25, color: "white" }}
-        >{`${banner.offPercent} OFF`}</Text>
-        <Text style={{ color: "white" }}>
-          On first{" "}
-          <Text style={{ fontWeight: "bold" }}>{banner.firstOrder}</Text> order
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>Get</Text>
+        <Text style={styles.boldText}>{`${banner.offPercent} OFF`}</Text>
+        <Text style={styles.text}>
+          On first <Text style={styles.boldText}>{banner.firstOrder}</Text>{" "}
+          order
         </Text>
       </View>
     </View>
   );
 };
 
-export default Banner;
+const styles = StyleSheet.create({
+  banner: {
+    borderRadius: 16,
+    width: 260,
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 20,
+    height: 130,
+  },
+  icon: {
+    color: "white",
+  },
+  textContainer: {
+    color: "white",
+  },
+  text: {
+    color: "white",
+  },
+  boldText: {
+    fontWeight: "bold",
+    fontSize: 25,
+    color: "white",
+  },
+});
 
-const styles = StyleSheet.create({});
+export default Banner;
