@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Dimensions, View, TouchableOpacity, Text } from "react-native";
+import { Image, Dimensions, View } from "react-native";
 import { SwiperFlatList } from "react-native-swiper-flatlist";
 
 const ProductImgCarousel = ({ images }) => {

@@ -4,7 +4,6 @@ import BackButton from "../components/BackButton";
 import ProductCart from "../components/ProductCart";
 import CartContext from "../context/cart/CartContext";
 import ProductContext from "../context/products/ProductContext";
-import Icon from "react-native-vector-icons/Ionicons";
 import Button from "../components/Button";
 import { ScrollView } from "react-native-gesture-handler";
 

@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     display: "flex",
     alignItems: "center",
-    justifyContents: "center",
+    justifyContent: "center",
     alignContent: "center",
   },
   icon: {

@@ -1,30 +1,3 @@
-// import { StyleSheet, Text, View } from "react-native";
-// import React from "react";
-// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-// import Home from "../pages/tabs/Home";
-// import Category from "../pages/tabs/Category";
-// import Favorites from "../pages/tabs/Favorites";
-// import More from "../pages/tabs/More";
-
-// const Tab = createBottomTabNavigator();
-// const HomeTabs = () => {
-//   return (
-//     <Tab.Navigator
-//       initialRouteName="HomeTab"
-//       screenOptions={{ headerShown: false }}
-//     >
-//       <Tab.Screen name="HomeTab" component={Home} />
-//       <Tab.Screen name="Category" component={Category} />
-//       <Tab.Screen name="Favorites" component={Favorites} />
-//       <Tab.Screen name="More" component={More} />
-//     </Tab.Navigator>
-//   );
-// };
-
-// export default HomeTabs;
-
-// const styles = StyleSheet.create({});
-
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -78,7 +51,7 @@ const HomeTabs = () => {
         },
         tabBarActiveTintColor: "#E0B420",
         tabBarInactiveTintColor: "gray",
-        tabBarStyle: { display: "flex", width: Dimensions.get("window").width },
+        tabBarStyle: { width: Dimensions.get("window").width },
       })}
     >
       <Tab.Screen
